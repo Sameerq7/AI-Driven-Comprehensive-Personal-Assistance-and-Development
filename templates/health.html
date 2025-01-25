@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Advisory Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #48c6ef;
+            --secondary-color: #2196F3;
+            --accent-color: #FFC107;
+            --background-color: #020a11;
+            --card-bg-color: rgb(26, 27, 28);
+            --text-color: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-inner {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .tool {
+            background-color: var(--card-bg-color);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tool:hover {
+            transform: scale(1.05);
+        }
+
+        .tool h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .faq-item {
+            background-color: var(--card-bg-color);
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background-color: #E8F5E9;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 0.5rem;
+        }
+
+        .popular-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .topic {
+            background-color: var(--card-bg-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .topic:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .blog-post {
+            background-color: var(--card-bg-color);
+            padding: 1rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-post h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .blog-post p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .emergency-contacts {
+            background-color:rgb(26, 27, 28);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        .emergency-contacts h3 {
+            color: #B71C1C;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="icon" href="/static/images/favicon.jpeg" type="image/jpeg">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Health Advisory Services</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search symptoms, health tips, or doctors...">
+                <button>Search</button>
+            </div>
+        </header>
+
+        <section class="card-grid">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-icon">🏥</div>
+                    <h3>General Health</h3>
+                    <p>Daily health tips, preventive care, and FAQs on common illnesses.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-icon">🧠</div>
+                    <h3>Mental Health</h3>
+                    <p>Guidance on stress management, therapy resources, and mindfulness techniques.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-icon">🥗</div>
+                    <h3>Nutrition and Diet</h3>
+                    <p>Meal plans, dietary recommendations, and advice for specific health conditions.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-icon">💊</div>
+                    <h3>Chronic Illness Management</h3>
+                    <p>Tips for managing diabetes, hypertension, asthma, and other chronic conditions.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-icon">🏋️‍♀️</div>
+                    <h3>Fitness and Wellness</h3>
+                    <p>Home workout plans, fitness tips, and injury prevention strategies.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-icon">👩‍⚕️</div>
+                    <h3>Women's Health</h3>
+                    <p>Pregnancy care, menstrual health, and hormonal balance information.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Featured Tools and Resources</h2>
+            <div class="tools-grid">
+                <div class="tool">
+                    <h3>Symptom Checker</h3>
+                    <p>Input symptoms to receive potential diagnoses and recommendations.</p>
+                    <a href="#" class="cta-button">Check Symptoms</a>
+                </div>
+                <div class="tool">
+                    <h3>BMI Calculator</h3>
+                    <p>Calculate your Body Mass Index and get ideal weight suggestions.</p>
+                    <a href="#" class="cta-button">Calculate BMI</a>
+                </div>
+                <div class="tool">
+                    <h3>Meal Planner</h3>
+                    <p>Generate personalized meal plans based on your health goals.</p>
+                    <a href="#" class="cta-button">Plan Meals</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">What are the early signs of diabetes?</div>
+                <div class="faq-answer">Early signs of diabetes can include increased thirst, frequent urination, unexplained weight loss, blurred vision, and slow-healing wounds. If you experience these symptoms, consult a healthcare professional.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How to reduce stress at work?</div>
+                <div class="faq-answer">To reduce stress at work, try practicing mindfulness, taking regular breaks, prioritizing tasks, maintaining a healthy work-life balance, and communicating openly with colleagues and supervisors about your concerns.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What are the benefits of regular exercise?</div>
+                <div class="faq-answer">Regular exercise offers numerous benefits, including improved cardiovascular health, weight management, stronger bones and muscles, better mental health, increased energy levels, and reduced risk of chronic diseases.</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Popular Health Topics</h2>
+            <div class="popular-topics">
+                <div class="topic">Benefits of intermittent fasting</div>
+                <div class="topic">How to improve sleep quality</div>
+                <div class="topic">Managing anxiety naturally</div>
+                <div class="topic">Heart-healthy diet tips</div>
+                <div class="topic">Boosting immune system</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Health Insights</h2>
+            <div class="blog-grid">
+                <div class="blog-post">
+                    <h3>5 Foods to Boost Your Immunity</h3>
+                    <p>Discover the top immune-boosting foods to keep you healthy year-round.</p>
+                    <a href="#" class="cta-button">Read More</a>
+                </div>
+                <div class="blog-post">
+                    <h3>Understanding Gut Health and Mental Health</h3>
+                    <p>Explore the fascinating connection between your gut and your mind.</p>
+                    <a href="#" class="cta-button">Read More</a>
+                </div>
+                <div class="blog-post">
+                    <h3>The Importance of Proper Hydration</h3>
+                    <p>Learn why staying hydrated is crucial for your overall health and well-being.</p>
+                    <a href="#" class="cta-button">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Virtual Consultation</h2>
+            <p>Schedule appointments with certified doctors, dieticians, or fitness trainers.</p>
+            <a href="#" class="cta-button">Book a Consultation</a>
+        </section>
+
+        <section class="section">
+            <h2>Health Tracker Integration</h2>
+            <p>Sync your wearable devices to monitor vitals such as heart rate, steps, and sleep patterns.</p>
+            <a href="#" class="cta-button">Connect Your Device</a>
+        </section>
+
+        <section class="section emergency-contacts">
+            <h3>Emergency Contacts</h3>
+            <p>Local Emergency Number: 911</p>
+            <p>Nearest Hospital: City General Hospital - (555) 123-4567</p>
+            <p>24/7 Health Helpline: (800) 987-6543</p>
+        </section>
+    </div>
+
+    <script>
+        // Card hover effect
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+                const answer = item.querySelector('.faq-answer');
+                if (item.classList.contains('active')) {
+                    answer.style.display = 'block';
+                } else {
+                    answer.style.display = 'none';
+                }
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        const searchButton = document.querySelector('.search-bar button');
+
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Dynamic Popular Topics
+        const popularTopics = [
+            'Benefits of intermittent fasting', 'How to improve sleep quality', 'Managing anxiety naturally',
+            'Heart-healthy diet tips', 'Boosting immune system', 'Importance of mental health',
+            'Yoga for beginners', 'Understanding food labels', 'Healthy aging tips'
+        ];
+
+        function updatePopularTopics() {
+            const topicsContainer = document.querySelector('.popular-topics');
+            topicsContainer.innerHTML = '';
+            
+            const shuffled = popularTopics.sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, 5);
+            
+            selected.forEach(topic => {
+                const topicElement = document.createElement('div');
+                topicElement.className = 'topic';
+                topicElement.textContent = topic;
+                topicsContainer.appendChild(topicElement);
+            });
+        }
+
+        updatePopularTopics();
+        setInterval(updatePopularTopics, 60000); // Update every minute
+
+        // Simulated BMI Calculator
+        const bmiCalculatorButton = document.querySelector('.tool:nth-child(2) .cta-button');
+        bmiCalculatorButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const height = prompt('Enter your height in meters:');
+            const weight = prompt('Enter your weight in kilograms:');
+            
+            if (height && weight) {
+                const bmi = (weight / (height * height)).toFixed(2);
+                let category;
+                if (bmi < 18.5) category = 'Underweight';
+                else if (bmi < 25) category = 'Normal weight';
+                else if (bmi < 30) category = 'Overweight';
+                else category = 'Obese';
+                
+                alert(`Your BMI is ${bmi}. Category: ${category}`);
+            }
+        });
+
+        // Virtual Consultation Booking
+        const bookConsultationButton = document.querySelector('section:nth-last-child(3) .cta-button');
+        bookConsultationButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const specialist = prompt('Choose a specialist (doctor/dietician/fitness trainer):');
+            const date = prompt('Enter preferred date (YYYY-MM-DD):');
+            
+            if (specialist && date) {
+                alert(`Thank you! Your consultation with a ${specialist} has been requested for ${date}. We will confirm shortly.`);
+            }
+        });
+
+        // Health Tracker Connection Simulation
+        const connectDeviceButton = document.querySelector('section:nth-last-child(2) .cta-button');
+        connectDeviceButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Connecting to your device... Please follow the instructions on your wearable device to complete the connection.');
+        });
+    </script>
+</body>
+</html>

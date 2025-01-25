@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Advisory Services</title>
+    <link rel="icon" href="/static/images/favicon.jpeg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #48c6ef;
+            --secondary-color: #00aaff;
+            --accent-color: #ff0088;
+            --background-color: #0d0d0d;
+            --card-bg-color: #1a1a1a;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background-clip: border-box;
+            -webkit-background-clip: border-box;
+            -moz-background-clip: border-box;
+
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .card-back {
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            transform: rotateY(180deg);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .faq-item {
+            background-color: var(--card-bg-color);
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 0.5rem;
+        }
+
+        .popular-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .topic {
+            background-color: var(--card-bg-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .topic:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .interactive-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature {
+            background-color: var(--card-bg-color);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .blog-post {
+            background-color: var(--card-bg-color);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .blog-post h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Legal Advisory Services</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for legal information...">
+                <button>🔍</button>
+            </div>
+        </header>
+
+        <section class="card-grid">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-icon">⚖️</div>
+                        <h3>Criminal Law</h3>
+                        <p>Rights, legal procedures, and common criminal law FAQs.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Criminal Law</h3>
+                        <p>Learn about your rights during arrests, criminal procedures, and get answers to common
+                            criminal law questions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-icon">👨‍👩‍👧‍👦</div>
+                        <h3>Family Law</h3>
+                        <p>Covering divorce, child custody, inheritance, etc.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Family Law</h3>
+                        <p>Get information on divorce proceedings, child custody arrangements, inheritance laws, and
+                            other family-related legal matters.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-icon">🏢</div>
+                        <h3>Corporate Law</h3>
+                        <p>Guidelines for businesses, contracts, and mergers.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Corporate Law</h3>
+                        <p>Understand the legal aspects of running a business, including contract law, mergers and
+                            acquisitions, and corporate governance.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-icon">🏠</div>
+                        <h3>Property Law</h3>
+                        <p>Details on property disputes, registration, and landlord-tenant issues.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Property Law</h3>
+                        <p>Learn about property registration, resolving disputes, and understanding your rights as a
+                            landlord or tenant.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-icon">💡</div>
+                        <h3>Intellectual Property Law</h3>
+                        <p>Trademarks, patents, and copyright details.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Intellectual Property Law</h3>
+                        <p>Protect your ideas and creations with information on trademarks, patents, and copyrights.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-icon">🛒</div>
+                        <h3>Consumer Protection Law</h3>
+                        <p>Guidance on customer rights and dispute resolutions.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Consumer Protection Law</h3>
+                        <p>Understand your rights as a consumer and learn how to resolve disputes with businesses
+                            effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">What are my rights during an arrest?</div>
+                <div class="faq-answer">You have the right to remain silent, the right to an attorney, and the right to
+                    know why you're being arrested. It's important to stay calm and not resist arrest.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I resolve a property dispute?</div>
+                <div class="faq-answer">Start by trying to negotiate with the other party. If that fails, consider
+                    mediation. As a last resort, you may need to file a lawsuit. Always consult with a property lawyer
+                    for specific advice.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What should I do if I'm involved in a car accident?</div>
+                <div class="faq-answer">First, ensure everyone's safety and call emergency services if needed. Exchange
+                    information with the other driver(s) involved, take photos of the scene, and contact your insurance
+                    company. Consider consulting a lawyer if there are injuries or significant damage.</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Popular Legal Topics</h2>
+            <div class="popular-topics">
+                <div class="topic">Employment Law</div>
+                <div class="topic">Immigration</div>
+                <div class="topic">Personal Injury</div>
+                <div class="topic">Tax Law</div>
+                <div class="topic">Environmental Law</div>
+            </div>
+        </section>
+
+        <section class="section" style="padding: 40px 20px; background-color: #f7f7f7;">
+            <h2 style="font-size: 32px; font-weight: bold; text-align: center; color: #333;">Interactive Features</h2>
+            <div class="interactive-features" style="max-width: 1000px; margin: 0 auto; padding-top: 20px;">
+                <!-- Ask an AI Lawyer Feature -->
+                <div class="feature" style="background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); margin-bottom: 30px;">
+                    <h3 style="font-size: 28px; color: #4A90E2; text-align: center; margin-bottom: 15px;">Ask an AI Lawyer</h3>
+                    <p style="font-size: 16px; color: #555; text-align: center; margin-bottom: 20px;">Get instant answers to your legal questions from our AI-powered legal assistant.</p>
+                    <button id="start-chat" style="background-color: #4A90E2; color: #fff; font-size: 18px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-bottom: 20px;">Start Chat</button>
+                    
+                    <div id="chat-container" style="display: none; margin-top: 20px;">
+                        <div id="chat-window" style="border: 1px solid #ddd; border-radius: 8px; padding: 10px; background-color: #fafafa; height: 300px; overflow-y: auto;">
+                            <div id="chat-history" style="font-size: 16px; line-height: 1.6; color: #333;"></div>
+                        </div>
+                        <textarea id="user-question" placeholder="Ask your legal question..." rows="4" style="width: 100%; padding: 10px; font-size: 18px; border-radius: 8px; border: 1px solid #ddd; margin-top: 10px; resize: none;"></textarea>
+                        <button id="send-question" style="background-color: #4A90E2; color: white; font-size: 18px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px;">Send Question</button>
+                        <div id="chat-response" style="font-size: 16px; margin-top: 20px; color: #333;"></div>
+                    </div>
+                </div>
+        
+                <!-- Rights Calculator Feature -->
+                <div class="feature" style="background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                    <h3 style="font-size: 28px; color: #4A90E2; text-align: center; margin-bottom: 15px;">Rights Calculator</h3>
+                    <p style="font-size: 16px; color: #555; text-align: center; margin-bottom: 20px;">Determine your specific rights based on your situation.</p>
+                    <button style="background-color: #4A90E2; color: white; font-size: 18px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Calculate Rights</button>
+                </div>
+            </div>
+        </section>
+        
+
+        <section class="section">
+            <h2>Legal Insights</h2>
+            <div class="blog-grid">
+                <div class="blog-post">
+                    <h3>Understanding Criminal Law in Simple Terms</h3>
+                    <p>A beginner's guide to the basics of criminal law and its processes.</p>
+                </div>
+                <div class="blog-post">
+                    <h3>How to Protect Your Intellectual Property in 5 Steps</h3>
+                    <p>Essential steps to safeguard your creative works and innovations.</p>
+                </div>
+                <div class="blog-post">
+                    <h3>The Basics of Contract Law for Small Businesses</h3>
+                    <p>Key points every entrepreneur should know about contracts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Contact a Legal Expert</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Legal Question" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+
+document.getElementById("start-chat").addEventListener("click", () => {
+            document.getElementById("chat-container").style.display = "block";
+        });
+
+        document.getElementById("send-question").addEventListener("click", async () => {
+            const userQuestion = document.getElementById("user-question").value;
+
+            if (userQuestion.trim()) {
+                // Display loading state
+                document.getElementById("chat-response").innerHTML = "Connecting to lawyer...";
+
+                // Send the question to the backend
+                const response = await fetch('/talk_lawyer', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question: userQuestion }),
+                });
+
+                const result = await response.json();
+
+                // Display the response from the backend
+                if (response.ok) {
+                    document.getElementById("chat-response").innerHTML = result.answer;
+                } else {
+                    document.getElementById("chat-response").innerHTML = "Sorry, there was an error. Please try again later.";
+                }
+            } else {
+                alert("Please enter a question.");
+            }
+        });
+        // Flip card effect
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                const cardInner = card.querySelector('.card-inner');
+                // Toggle the rotation of the card
+                if (cardInner.style.transform === 'rotateY(180deg)') {
+                    cardInner.style.transform = 'rotateY(0deg)';
+                } else {
+                    cardInner.style.transform = 'rotateY(180deg)';
+                }
+            });
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        const searchButton = document.querySelector('.search-bar button');
+
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Dynamic Popular Topics
+        const popularTopics = [
+            'Employment Law', 'Immigration', 'Personal Injury', 'Tax Law', 'Environmental Law',
+            'Cybercrime', 'Medical Malpractice', 'Bankruptcy', 'Civil Rights', 'International Law'
+        ];
+
+        function updatePopularTopics() {
+            const topicsContainer = document.querySelector('.popular-topics');
+            topicsContainer.innerHTML = '';
+
+            const shuffled = popularTopics.sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, 5);
+
+            selected.forEach(topic => {
+                const topicElement = document.createElement('div');
+                topicElement.className = 'topic';
+                topicElement.textContent = topic;
+                topicsContainer.appendChild(topicElement);
+            });
+        }
+
+        updatePopularTopics();
+        setInterval(updatePopularTopics, 60000); // Update every minute
+
+        // Simulated AI Lawyer Chat
+        const startChatButton = document.querySelector('.feature button');
+        startChatButton.addEventListener('click', () => {
+            console.log('AI Lawyer: Hello! How can I assist you with your legal questions today?');
+        });
+
+        // Rights Calculator (simplified version)
+        const calculateRightsButton = document.querySelector('.feature:nth-child(2) button');
+        calculateRightsButton.addEventListener('click', () => {
+            const age = prompt('Please enter your age:');
+            const location = prompt('Please enter your country:');
+
+            if (age && location) {
+                alert(`Based on your age (${age}) and location (${location}), here are some of your basic rights:\n\n1. Right to freedom of speech\n2. Right to fair trial\n3. Right to education\n\nPlease consult with a legal professional for more specific information.`);
+            }
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your inquiry. A legal expert will contact you soon.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+
+</html>

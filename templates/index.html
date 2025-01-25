@@ -9,18 +9,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=robot_2" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=robot_2" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=robot_2&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=robot_2&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="/static/images/favicon.jpeg" type="image/jpeg">
 </head>
 
-<body style="background-image: url('/static/images/background6.jpg'); background-size: cover; background-position: center;">
+<body
+    style="background-image: url('/static/images/background6.jpg'); background-size: cover; background-position: center;">
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">AI Platform</div>
+        <div class="logo">AI-Transformers</div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i> <!-- Hamburger Icon -->
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
@@ -28,10 +38,11 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
+    
 
     <!-- Hero Section -->
     <header class="hero">
-        <h1>AI-Driven Comprehensive Personal Development and Assistance</h1>
+        <h1>AI-Powered Personal Growth and Assistance</h1>
         <p>Your one-stop solution for personalized services across multiple domains</p>
         <a href="#services" class="btn hero-btn">Explore Services</a>
     </header>
@@ -41,9 +52,9 @@
 
     <!-- Question Input Section -->
     <section class="ask-section">
-        <h2>Ask Your Question</h2>
+        <h2>How can i help you captain.....?</h2>
         <p>Let our AI assistant provide you with accurate answers in real time!</p>
-        <input type="text" id="user-question" placeholder="Type your question here..." />
+        <input type="text" id="user-question" placeholder="Type your question here..." aria-label="Ask your question" />
         <button onclick="fetchAnswer()">Get Answer</button>
         <div id="response" class="response-box"></div>
     </section>
@@ -53,30 +64,75 @@
         <h2>Our Services</h2>
         <div class="services-container">
             <!-- Service Cards -->
-            <div class="service-card" onclick="window.open('/student-services', '_blank');">
-                <i class="bi bi-person-badge"></i>
-                <h3>Student Services</h3>
-                <p>Get access to advanced educational tools, including coding resources and resume analyzers.</p>
+            <div class="service-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <span class="material-symbols-outlined">robot_2</span>
+                        <h3>Artificial Assistant</h3>
+                        <p>Interact with JARVIS for personalized assistance and task automation.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3><a href="http://127.0.0.1:8000/" target="_blank" class="card-link">Artificial Assistant</a></h3>
+                        <p>Let JARVIS automate your day-to-day tasks efficiently.</p>
+                    </div>
+                </div>
             </div>
-            <div class="service-card" onclick="window.open('/health-advisory', '_blank');">
-                <i class="bi bi-heart-pulse"></i>
-                <h3>Health Advisory</h3>
-                <p>Track your health metrics and receive AI-driven wellness recommendations.</p>
+
+            <div class="service-card">
+                
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="bi bi-person-badge"></i>
+                        <h3>Student Services</h3>
+                        <p>Access advanced educational tools, coding resources, and resume analyzers.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3><a href="/student" target="_blank" >Student Services</a></h3>
+                        <p>Explore comprehensive support for students at all levels.</p>
+                    </div>
+                </div>
             </div>
-            <div class="service-card" onclick="window.open('/financial-advisory', '_blank');">
-                <i class="bi bi-coin"></i>
-                <h3>Financial Advisory</h3>
-                <p>Manage your expenses, plan investments, and achieve financial goals.</p>
+
+            <div class="service-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="bi bi-heart-pulse"></i>
+                        <h3>Health Advisory</h3>
+                        <p>Track health metrics and receive AI-driven wellness recommendations.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3><a href="/health" target="_blank" >Health Advisory</a></h3>
+                        <p>Comprehensive support for your health and fitness goals.</p>
+                    </div>
+                </div>
             </div>
-            <div class="service-card" onclick="window.open('/legal-advisory', '_blank');">
-                <span class="material-symbols-outlined">gavel</span>
-                <h3>Legal Advisory</h3>
-                <p>Understand legal processes with simplified guidance and AI support.</p>
+
+            <div class="service-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <i class="bi bi-coin"></i>
+                        <h3>Financial Advisory</h3>
+                        <p>Manage your expenses, plan investments, and achieve financial goals.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3><a href="/finance" target="_blank" >Financial Advisory</a></h3>
+                        <p>Let AI assist you with all your financial planning needs.</p>
+                    </div>
+                </div>
             </div>
-            <div class="service-card" onclick="window.open('http://127.0.0.1:8000/', '_blank');">
-                <span class="material-symbols-outlined">robot_2</span>
-                <h3>Artificial Assistant</h3>
-                <p>Interact with JARVIS for personalized assistance and task automation.</p>
+
+            <div class="service-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <span class="material-symbols-outlined">gavel</span>
+                        <h3>Legal Advisory</h3>
+                        <p>Understand legal processes with simplified AI-guided support.</p>
+                    </div>
+                    <div class="card-back">
+                        <h3><a href="/legal" target="_blank" >Legal Advisory</a></h3>
+                        <p>Access streamlined and reliable legal information.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -86,44 +142,46 @@
         <div>
             <strong>Follow</strong>
             <div class="social-icons">
-                <a id="facebook-icon" href="https://www.facebook.com/shaiksameer.hussain.12" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a id="twitter-icon" href="https://x.com/ShaikSa67284618" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a id="instagram-icon" href="https://www.instagram.com/h_shaiksameer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a id="linkedin-icon" href="https://www.linkedin.com/in/shaik-sameer-hussain-b88323250/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/shaiksameer.hussain.12" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/ShaikSa67284618" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/h_shaiksameer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/shaik-sameer-hussain-b88323250/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
             <p>© 2025 AI Driven Comprehensive Personal Development. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('show');
+    }
         function fetchAnswer() {
-            const question = document.getElementById("user-question").value;
-            if (!question.trim()) {
-                document.getElementById("response").textContent = "Please enter a question!";
+            const question = document.getElementById("user-question").value.trim();
+            const responseBox = document.getElementById("response");
+
+            if (!question) {
+                responseBox.textContent = "Please enter a question!";
                 return;
             }
 
-            document.getElementById("response").textContent = "Fetching your answer...";
-
+            responseBox.textContent = "Fetching your answer...";
             fetch("/ask", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ question: question }),
+                body: JSON.stringify({ question })
             })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("response").textContent = data.answer || "No answer available.";
-            })
-            .catch(err => {
-                document.getElementById("response").textContent = "Error fetching answer. Please try again.";
-                console.error(err);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    responseBox.textContent = data.answer || "No answer available.";
+                })
+                .catch(() => {
+                    responseBox.textContent = "Error fetching answer. Please try again.";
+                });
         }
 
         document.getElementById("user-question").addEventListener("keypress", function (e) {
-            if (e.key === 'Enter') {
-                fetchAnswer();
-            }
+            if (e.key === "Enter") fetchAnswer();
         });
     </script>
 </body>
