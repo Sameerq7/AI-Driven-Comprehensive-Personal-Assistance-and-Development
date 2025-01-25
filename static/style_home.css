@@ -1,0 +1,282 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=robot_2');
+
+/* Reset and universal styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+}
+
+body {
+    background: linear-gradient(45deg, #004e92, #000428, #0099cc, #2b5876, #0077b6);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Animation for Background Gradient */
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 60, 83, 0.9);
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #00d9ff;
+}
+
+.navbar .logo {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 25px;
+}
+
+.navbar .nav-links li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.navbar .nav-links li a:hover {
+    color: #00d9ff;
+    transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    color: #fff;
+    padding: 120px 20px;
+    z-index: 2;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero .btn {
+    padding: 10px 30px;
+    background-color: #00d9ff;
+    color: #fff;
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 255, 0.8);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: #006f8e;
+    box-shadow: 0px 0px 30px rgba(0, 111, 142, 0.9);
+}
+
+/* Dynamic Text Section */
+#dynamic-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    color: #fff;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Ask Question Section */
+.ask-section {
+    text-align: center;
+    margin-top: 50px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1;
+}
+
+.ask-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.ask-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.ask-section input {
+    width: 50%;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: 2px solid #004e92;
+    border-radius: 25px;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.ask-section input:focus {
+    border-color: #00d9ff;
+}
+
+.ask-section button {
+    padding: 12px 30px;
+    background-color: #00d9ff;
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.ask-section button:hover {
+    background-color: #006f8e;
+    transform: scale(1.05);
+}
+
+.ask-section .response-box {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #00d9ff;
+}
+
+/* Services Section */
+.services {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f4f7fc;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.services-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background-color: #fff;
+    padding: 30px;
+    width: 250px;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.service-card i {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #000;  /* Change icon color to black */
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #000;  /* Change heading color to black */
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Footer */
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+footer .social-icons a {
+    color: #fff; /* Change icon color to white */
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #00d9ff; /* Hover color for icons */
+    transform: scale(1.1);
+}
+
+footer p {
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+/* Social Media Icons Styling */
+.social-icons a {
+    font-size: 30px; /* Adjust icon size */
+    color: #fff; /* Ensure white color for icons */
+    margin: 0 10px; /* Add spacing between icons */
+}
+
+.social-icons a:hover {
+    color: #00d9ff; /* Change color on hover */
+}
+
+
+/* Material Icons for JARVIS and Legal Advisory */
+.material-symbols-outlined {
+    font-size: 3rem;
+    color: #00d9ff;
+}
+
+/* JARVIS icon */
+.service-card img, .service-card .material-symbols-outlined {
+    font-size: 3rem;  /* Adjust icon size for JARVIS */
+    color: #000;
+}
